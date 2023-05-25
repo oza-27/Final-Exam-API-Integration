@@ -1,0 +1,120 @@
+<button class="btn btn-info m-2" routerLink="/dashboard"> Go to Dashboard </button>
+
+<!-- <div class="container m-3 p-2">
+    <div class="border m-1 p-1">
+        <div class="row m-1 p-1">
+            <div class="col-6">
+                <button class="btn btn-outline-info" style="width: 30%;" routerLink="/add-address"> Add Address
+                </button>
+            </div>
+            <div class="col-6">
+                <h3 class="text-start" style="font-weight: bold;"> Order List </h3>
+            </div>
+        </div>
+        <table class="table-bordered table-striped w-100 text-center">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Contact Number </th>
+                    <th> Discount Amount </th>
+                    <th> Note </th>
+                    <th> IsActive </th>
+                    <th> Total Amount </th>
+                    <th> Order Date </th>
+                    <th> Status Type </th>
+                </tr>
+            </thead>
+            <tbody style="height: 20%;">
+                <tr *ngFor="let order of orders">
+                    <td> {{order.customerName}} </td>
+                    <td> {{order.custEmail}} </td>
+                    <td> {{order.customerContactNumber}} </td>
+                    <td> {{order.discountAmount}} </td>
+                    <td> {{order.note}} </td>
+                    <td> {{order.isActive}} </td>
+                    <td> {{order.totalAmount}} </td>
+                    <td> {{order.orderDate}} </td>
+                    <td> {{order.statusType}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+
+<!-- <div class="container m-3 p-2">
+    <div class="border m-1 p-1">
+        <div class="row m-1 p-1">
+            <div class="col-6">
+                <button class="btn btn-outline-info" style="width: 30%;" routerLink="/add-address"> Add Address
+                </button>
+            </div>
+            <div class="col-6">
+                <h3 class="text-start" style="font-weight: bold;"> Product List </h3>
+            </div>
+        </div>
+        <table class="table-bordered table-striped w-100 text-center">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Description </th>
+                    <th> Price </th>
+                    <th> Quantity </th>
+                    <th> IsActive </th>
+                    <th> CreatedOn </th>
+                </tr>
+            </thead>
+            <tbody style="height: 20%;">
+                <tr *ngFor="let product of products">
+                    <td> {{product.name}} </td>
+                    <td> {{product.description}} </td>
+                    <td> {{product.price}} </td>
+                    <td> {{product.quantity}} </td>
+                    <td> {{product.isactive}} </td>
+                    <td> {{product.isCreated}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+<div class="container m-3 p-2">
+    <div class="border m-1 p-1">
+        <div class="row m-1 p-1">
+            <div class="col-6">
+                <button class="btn btn-outline-info" style="width: 30%;" routerLink="/add-address"> Add Address
+                </button>
+            </div>
+            <div class="col-6">
+                <h3 class="text-start" style="font-weight: bold;"> Address List </h3>
+            </div>
+        </div>
+        <table class="table-bordered table-striped w-100 text-center">
+            <thead>
+                <tr>
+                    <th> Address </th>
+                    <th> Address Type </th>
+                    <th> Country </th>
+                    <th> State </th>
+                    <th> City </th>
+                    <th> ZipCode </th>
+                    <th> Contact Person </th>
+                    <th> Contact Number </th>
+                </tr>
+            </thead>
+            <tbody style="height: 20%;">
+                <tr *ngFor="let address of addresses">
+                    <td> {{address.shippingAddress}} </td>
+                    <td> {{address.addressType}} </td>
+                    <td> {{address.country}} </td>
+                    <td> {{address.state}} </td>
+                    <td> {{address.city}} </td>
+                    <td> {{address.zipCode}} </td>
+                    <td> {{address.contactPerson}} </td>
+                    <td> {{address.contactNumber}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
