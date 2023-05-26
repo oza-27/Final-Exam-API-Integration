@@ -1,0 +1,17 @@
+.outer{
+    background-image: url("../../../assets/images/ProductTwo.jpg");
+    background-size: cover;
+}
+
+.card{
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px;
+    box-decoration-break: slice;
+}
+
+.card:hover{
+    background-color: aquamarine;
+    cursor: pointer;
+}
+

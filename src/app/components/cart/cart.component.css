@@ -1,0 +1,16 @@
+.outer{
+    background-color: aqua;
+}
+
+tr:hover{
+    background-color: violet;
+}
+
+button:hover{
+    background-color: tomato;
+}
+
+.btn-secondary{
+    margin-top: 2%;
+    margin-left: 2%;
+}

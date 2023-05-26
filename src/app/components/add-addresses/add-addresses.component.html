@@ -11,6 +11,9 @@
                         <option value="billing"> Billing </option>
                         <option value="shipping"> Shipping </option>
                    </select>
+                    <div *ngIf="submitting && getAllValidations.addressType.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.addressType.errors.required">This field is required</div>
+                    </div>
                 </div>
 
 
@@ -18,11 +21,17 @@
                     <label> Contact Person </label>
                     <input type="text" class="form-control form-input" formControlName="contactPerson" id="contactPerson" name="contactPerson"
                         placeholder="Enter the name of person we can contact" />
+                    <div *ngIf="submitting && getAllValidations.contactPerson.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.contactPerson.errors.required">This field is required</div>
+                    </div>
                 </div>
                 
                 <div class="form-group mb-3">
                     <label> Shipping Address </label>
                     <textarea type="textarea" class="form-control" rows="3" formControlName="shippingAddress" required> </textarea>
+                    <div *ngIf="submitting && getAllValidations.shippingAddress.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.shippingAddress.errors.required">This field is required</div>
+                    </div>
                 </div>
 
                 
@@ -31,6 +40,9 @@
                     <label> Country </label>
                     <input type="text" class="form-control" id="country" name="country" formControlName="country"
                         placeholder="Enter your Country">
+                    <div *ngIf="submitting && getAllValidations.country.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.country.errors.required">This field is required</div>
+                    </div>
                 </div>
                 
             
@@ -38,16 +50,25 @@
                     <label> City </label>
                     <input type="text" class="form-control" id="city" name="city" formControlName="city"
                         placeholder="Enter your City">
+                    <div *ngIf="submitting && getAllValidations.city.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.city.errors.required">This field is required</div>
+                    </div>
                 </div>
                 
                 <div class="form-group mb-3">
                     <label> State </label>
                     <input type="text" class="form-control" id="state" name="state" formControlName="state" placeholder="Enter your state">
+                    <div *ngIf="submitting && getAllValidations.state.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.state.errors.required">This field is required</div>
+                    </div>
                 </div>
 
                 <div class="form-group mb-3">
                     <label> Zip Code </label>
                     <input type="number" max="6" class="form-control" id="zipCode" name="zipCode" formControlName="zipCode" placeholder="Enter your Zip Code">
+                    <div *ngIf="submitting && getAllValidations.zipCode.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.zipCode.errors.required">This field is required</div>
+                    </div>
                 </div>
                 
 
@@ -56,6 +77,9 @@
                     <label> Phone Number </label>
                     <input type="number" maxlength="10" class="form-control" id="phone" name="phone" formControlName="contactNumber"
                         placeholder="Enter your Phone number">
+                    <div *ngIf="submitting && getAllValidations.contactNumber.errors">
+                        <div style="color: red;" *ngIf="getAllValidations.contactNumber.errors.required">This field is required</div>
+                    </div>
                 </div>
 
 

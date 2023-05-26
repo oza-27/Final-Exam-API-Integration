@@ -1,0 +1,39 @@
+
+    <div class="container">
+        <div class="border">
+            <div class="row m-1 p-1">
+                <div class="col-6">
+                    <button class="btn btn-outline-info " style="width: 30%;margin-left: 2px;" routerLink="/add-order"> <i
+                            class="bi bi-plus-circle"></i> Add Order
+                    </button>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-start" style="font-weight: bold;"> Order List </h3>
+                </div>
+            </div>
+            <div class="border m-1 p-1" style="width: 90%;">
+                <table class="text-center table-bordered w-100 table-striped">
+                    <thead>
+                        <tr>
+                            <th> Customer Name </th>
+                            <th> Customer Email </th>
+                            <th> Customer Contact Number </th>
+                            <th> Status Type </th>
+                            <th> Total Discount </th>
+                            <th> Order Date </th> 
+                        </tr>
+                    </thead>
+                    <tbody style="height: 20%;">
+                        <tr *ngFor="let order of orders">
+                            <td style="width: 20%;"> {{order.customerName}} </td>
+                            <td style="width: 20%;"> {{order.custEmail}} </td>
+                            <td style="width: 20%;"> {{order.customerContactNumber}} </td>
+                            <td style="width: 20%;"> {{order.statusType}} </td>
+                            <td style="width: 20%;"> {{order.totalAmount}} </td>
+                            <td style="width: 20%;"> {{order.orderDate}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

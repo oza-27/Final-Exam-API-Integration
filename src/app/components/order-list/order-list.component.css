@@ -1,0 +1,19 @@
+.border{
+    margin: 1%;
+    padding: 1%;
+    margin-bottom: 15%;
+}
+
+
+tr:hover {
+    background-color: violet;
+}
+
+button:hover {
+    background-color: tomato;
+}
+
+.btn-secondary {
+    margin-top: 2%;
+    margin-left: 2%;
+}

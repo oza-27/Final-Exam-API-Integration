@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import validateForm from '../helpers/validateall';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +17,27 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   username: string = "";
   password: string = "";
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder, private service:AuthService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: [null, Validators.required],
+      email: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: [null, Validators.required]
     })
   }
-  onSubmit() {
+  onSubmit(value:any) {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
-      // send obj to database
+      this.service.login(this.loginForm.value).subscribe({
+        next:(response) =>{
+          localStorage.setItem("myDashboardData", JSON.stringify(value));
+          sessionStorage.setItem("myDashboardData", JSON.stringify(value));
+          console.log(response);
+          this.router.navigate(['dashboard']);
+          this.toastr.success("Login succesfully:");
+        }, error:(err) =>{
+          this.toastr.error("Something went wrong:/");
+        }
+      })
     }
     else {
       // error using toastr and with required fields...

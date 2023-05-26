@@ -11,26 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AllListsComponent implements OnInit {
 
-  orders: Order[] = [];
-  products: Products[] = [];
   addresses: Address[] = [];
 
   constructor(private service: AuthService) { }
 
   ngOnInit(): void {
-    this.service.getAllOrders().subscribe({
-      next: (orderData) => {
-        this.orders = orderData;
-        console.log(orderData);
-      }
-    })
-
-    this.service.getAllProducts().subscribe({
-      next: (productData) =>{
-        this.products = productData;
-        console.log(productData)
-      }
-    })
 
     this.service.getAddress().subscribe({
       next:(addressData) =>{

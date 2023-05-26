@@ -1,8 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import validateForm from '../helpers/validateall';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.modle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +17,13 @@ export class RegisterComponent implements OnInit {
   eyeIcon: string = "fa fa-eye-slash";
   signupForm!: FormGroup;
   register: User[] = [];
-  constructor(private fb: FormBuilder, private service:AuthService) { }
+  constructor(private fb: FormBuilder, private service:AuthService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       email: [null, Validators.required],
       userName: [null, Validators.required],
+      phone: [null, Validators.required],
       password: [null, Validators.required]
     })
   }
@@ -39,6 +42,10 @@ export class RegisterComponent implements OnInit {
       this.service.registration(this.signupForm.value).subscribe({
         next: (response) =>{
           console.log(response);
+          this.router.navigate(['login'])
+          this.toastr.success("User Registered Successfully:")
+        }, error:(err) =>{
+          this.toastr.error("Something went wrong")
         }
       })
     }

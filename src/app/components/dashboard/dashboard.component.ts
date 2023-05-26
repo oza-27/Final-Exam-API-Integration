@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/models/orders.model';
 import { Products } from 'src/app/models/products.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,7 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit {
 
   products:Products[] = [];
-  constructor(private service:AuthService) { }
+  productlistdata: Products[] = [];
+  constructor(private service:AuthService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.service.getAllProducts().subscribe({
@@ -21,6 +24,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  onLogout(){
+    localStorage.removeItem('myDashboardData');
+    this.router.navigate(['login']);
+  }
   
+  onClick(products:Products){
+    this.productlistdata.push(products);
 
+    localStorage.setItem("productlist",JSON.stringify(this.products));
+    
+  }
 }

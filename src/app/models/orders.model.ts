@@ -5,7 +5,7 @@ export interface Order{
     customerContactNumber:string;
     isActive:boolean;
     createdOn:Date;
-    modifiedOn:Date;
+    updateOn:Date;
     discountAmount:number;
     orderDate:Date;
     totalAmount:number;

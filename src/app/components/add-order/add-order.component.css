@@ -1,0 +1,19 @@
+.container{
+    width: 70%;
+    margin-right: 15%;
+    padding: 2%;
+    height: 80%;
+    margin-top: 5%;
+}
+
+.border{
+    background-color: wheat;
+}
+
+button{
+    margin-left: 10%;
+}
+
+button:hover{
+    background-color: brown;
+}

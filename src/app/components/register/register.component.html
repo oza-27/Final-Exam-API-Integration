@@ -20,6 +20,7 @@
                                     *This field is required
                                 </span>
                             </div>
+
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-envelope p-2"></span>
@@ -31,6 +32,18 @@
                                     *This field is reqiured
                                 </span>
                             </div>
+
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-phone p-2"></span>
+                                    <input type="text" formControlName="phone" placeholder="Enter Your number">
+                                </div>
+                                <span *ngIf="signupForm.controls['phone'].dirty && signupForm.hasError('required', 'phone')"
+                                    style="color: red;">
+                                    *This field is required
+                                </span>
+                            </div>
+
                             <div class="form-group pt-3">
                                 <div class="input-field">
                                     <span class="fa fa-lock p-2"></span>

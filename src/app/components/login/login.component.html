@@ -9,17 +9,23 @@
                         </h3>
                     </div>
                     <div class="panel-body p-3">
-                        <form [formGroup]="loginForm">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
                             <div class="form-group pt-3">
                                 <div class="input-field"
-                                    [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
-                                    <span class="fa fa-user p-2"></span>
-                                    <input type="text" formControlName="username" placeholder="Enter username">
+                                    [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">
+                                    <span class="fa fa-envelope p-2"></span>
+                                    <input type="text" formControlName="email" placeholder="Enter email">
                                 </div>
                             </div>
                             <small
-                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                                style="color: red;"> *Username is required </small>
+                                *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"
+                                style="color: red;"> *Email is required 
+                            </small>
+                            <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('pattern','email')" style="color: red;"> *Email
+                                is required
+                            </small>
+                            
+                            
                             <div class="form-group pt-3">
                                 <div class="input-field"
                                     [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
@@ -34,7 +40,7 @@
                             <div class="form-inline fr mt-4">
                                 <a id="forgetPass" class="font-weight-bold"> Forget Password? </a>
                             </div>
-                            <button (click)="onSubmit()" class="btn btn-outline-primary btn-lock mt-4 w-100"
+                            <button class="btn btn-outline-primary btn-lock mt-4 w-100"
                                 type="submit"> Login </button>
                             <div class="text-center pt-4 text-muted">
                                 Don't have account? <a id="forgetPass" routerLink="/register" routerLinkActive="Active">

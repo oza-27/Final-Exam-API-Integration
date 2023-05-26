@@ -6,11 +6,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddAddressesComponent } from './components/add-addresses/add-addresses.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AllListsComponent } from './components/all-lists/all-lists.component';
+import { AllListsComponent } from './components/address-list/all-lists.component';
 import { AddOrderComponent } from './components/add-order/add-order.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ToastrModule,  } from 'ngx-toastr';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { OrderListComponent } from './components/order-list/order-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +24,22 @@ import { AddOrderComponent } from './components/add-order/add-order.component';
     AddAddressesComponent,
     DashboardComponent,
     AllListsComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    CartComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideAnimations(), //
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

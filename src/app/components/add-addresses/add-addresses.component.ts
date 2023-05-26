@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import validateForm from '../helpers/validateall';
 import { AuthService } from 'src/app/services/auth.service';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-addresses',
@@ -11,7 +12,9 @@ import { Route, Router } from '@angular/router';
 })
 export class AddAddressesComponent implements OnInit {
   addressForm:FormGroup;
-  constructor(private fb:FormBuilder, private service:AuthService, private router:Router) { }
+  submitting: boolean = false;
+  constructor(private fb:FormBuilder, private service:AuthService, private router:Router,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -30,20 +33,23 @@ export class AddAddressesComponent implements OnInit {
   onSubmit(){
     debugger
     if(this.addressForm.invalid){
-      debugger
+      
       this.service.addAddress(this.addressForm.value).subscribe({
-        next:(response) =>{
-          debugger
+        next:(response) =>{          
           console.log(response)
-          this.router.navigate(['all-lists']);
+          this.router.navigate(['cart']);
+          this.toastr.success("Address Added Successfully")
         }, error:(err) =>{
-          alert("something went wrong:/")
+          this.toastr.error("Something went worng:/")
+          this.router.navigate(['add-address'])
         }
       })
 
     }
-    else{
-      validateForm.validateAllForm(this.addressForm);
-    }
   }
+
+  get getAllValidations() {
+    return this.addressForm.controls
+  }
+
 }
