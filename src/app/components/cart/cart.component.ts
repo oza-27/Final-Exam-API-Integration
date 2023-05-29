@@ -14,12 +14,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  
+  chooseValue:any;
   productlist: Products[] = [];
   addressList: Address[] = [];
+  totalAmount:number;
   order:CreateOrder={
     email: '',
-    productList: ''
+    productList: '',
+    addressId:''
   }
   
   constructor(private service:OrderManagementService,
@@ -32,7 +34,11 @@ export class CartComponent implements OnInit {
     var setAddressData = JSON.parse(JSON.stringify(localStorage.getItem("addressList")));
     var checkAddress = JSON.parse(setAddressData);
     this.addressList = checkAddress;
-    
+
+    this.productlist.forEach(element =>{
+      this.totalAmount = element.price * element.quantity;
+    });
+
     this.service.getAddress(JSON.parse(localStorage.getItem("userId"))).subscribe({
       next:(res) =>{
         this.addressList = res.data;
@@ -58,17 +64,30 @@ export class CartComponent implements OnInit {
       })
     }
   }
-  onDelete(){
-    this.toastr.error("Not done this functionality")
+
+  // Delete Cart order
+  onDelete(id:any){
+    this.productlist.forEach((element, ind) =>{
+      if(element.productId == id){
+        this.productlist.splice(ind, 1);
+        localStorage.setItem("productList", JSON.stringify(this.productlist));
+        this.ngOnInit();
+      }
+    });
   } 
+
+
 
   plusQuantity(id:any){
     this.productlist.forEach(element =>{
       if(element.productId == id){
-        element.quantity += 1;
+        if(element.quantity <=10){
+          element.quantity += 1;
+        }
       }
     });
-    localStorage.setItem('productList', JSON.stringify(this.productlist))
+    localStorage.setItem('productList', JSON.stringify(this.productlist));
+    this.ngOnInit();
   }
 
   minusQuantity(id:any){
@@ -77,6 +96,11 @@ export class CartComponent implements OnInit {
         element.quantity -= 1;
       }
     });
-    localStorage.setItem('productList', JSON.stringify(this.productlist))
+    localStorage.setItem('productList', JSON.stringify(this.productlist));
+    this.ngOnInit();
+  }
+
+  onSubmit(Value:any){
+    this.chooseValue = Value
   }
 }
