@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
     if(jsonData!=null){
       jsonData.forEach(element => {
         if (element.productId == products.productId){
-          this.toastr.error("Product is already added into cart:");
+          this.toastr.error("It is already in the cart")
           count++;
         }
       });
@@ -60,7 +60,5 @@ export class DashboardComponent implements OnInit {
       });
       localStorage.setItem("productlist", JSON.stringify(this.productlistdata));
     }
-    
-    
   }
 }

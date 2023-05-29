@@ -36,11 +36,13 @@ export class LoginComponent implements OnInit {
     else {
       this.service.login(this.loginForm.value).subscribe({
         next: (response) => {
+          debugger
           if(response){
+            debugger
               this.toastr.success("Login Successfully");
               this.service.registeredUsers.next(response.data.email);
               localStorage.setItem("userData", response.data.email);
-              localStorage.setItem("userId", response.data.userId);
+            localStorage.setItem("userId", JSON.stringify(response.data.userId));
               this.router.navigate(['/dashboard']);
           }
         }, error: (err) => {

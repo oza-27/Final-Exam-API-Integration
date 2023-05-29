@@ -1,5 +1,6 @@
 .outer{
-    background-color: aqua;
+    background-image: url("../../../assets/images/producttmageOne.jpg");
+    background-size: cover;
 }
 
 tr:hover{
@@ -13,4 +14,8 @@ button:hover{
 .btn-secondary{
     margin-top: 2%;
     margin-left: 2%;
+}
+
+.border{
+    opacity: 10;
 }
