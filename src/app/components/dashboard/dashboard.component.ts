@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/models/orders.model';
 import { Products } from 'src/app/models/products.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { OrderManagementService } from 'src/app/services/Order-Management/order-management.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,27 +12,55 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  products:Products[] = [];
+  productlist:Products[] = [];
   productlistdata: Products[] = [];
-  constructor(private service:AuthService, private router:Router, private toastr:ToastrService) { }
+  constructor(private service:OrderManagementService, private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.service.getAllProducts().subscribe({
       next:(response) =>{
-        this.products = response;
+        this.productlist = response.data;
       }
     })
   }
 
   onLogout(){
-    localStorage.removeItem('myDashboardData');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userId');
     this.router.navigate(['login']);
   }
   
-  onClick(products:Products){
-    this.productlistdata.push(products);
+  addToCart(products:Products){
+    debugger
+    var jsonData = JSON.parse(localStorage.getItem('productlist'));
+    var count = 0;
 
-    localStorage.setItem("productlist",JSON.stringify(this.products));
+    if(jsonData!=null){
+      jsonData.forEach(element => {
+        if (element.productId == products.productId){
+          this.toastr.error("Product is already added into cart:");
+          count++;
+        }
+      });
+    }
+
+    if (localStorage.getItem('productlist')!=null && count == 0){
+      this.productlistdata = JSON.parse(localStorage.getItem('productlist'));
+      this.productlistdata.push(products);
+      this.toastr.success("Added to cart:)");
+    }else{
+      if(count == 0){
+        this.productlistdata.push(products)
+        this.toastr.success("Added to cart...");
+      }
+    }
+    if(count == 0){
+      this.productlistdata.forEach(element =>{
+        element.quantity=1;
+      });
+      localStorage.setItem("productlist", JSON.stringify(this.productlistdata));
+    }
+    
     
   }
 }

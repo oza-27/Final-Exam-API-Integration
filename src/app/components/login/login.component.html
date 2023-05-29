@@ -9,7 +9,7 @@
                         </h3>
                     </div>
                     <div class="panel-body p-3">
-                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                             <div class="form-group pt-3">
                                 <div class="input-field"
                                     [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">
@@ -21,10 +21,11 @@
                                 *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"
                                 style="color: red;"> *Email is required 
                             </small>
-                            <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('pattern','email')" style="color: red;"> *Email
-                                is required
+                            <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('pattern','email')" style="color: red;"> *Invalid Email
                             </small>
-                            
+                            <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('email','email')" style="color: red;"> *Email field is required
+                            </small>
+
                             
                             <div class="form-group pt-3">
                                 <div class="input-field"

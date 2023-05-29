@@ -1,9 +1,9 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import validateForm from '../helpers/validateall';
-import { AuthService } from 'src/app/services/auth.service';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { OrderManagementService } from 'src/app/services/Order-Management/order-management.service';
 
 @Component({
   selector: 'app-add-addresses',
@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddAddressesComponent implements OnInit {
   addressForm:FormGroup;
   submitting: boolean = false;
-  constructor(private fb:FormBuilder, private service:AuthService, private router:Router,
+  constructor(private fb:FormBuilder, private service:OrderManagementService, private router:Router,
     private toastr:ToastrService) { }
 
   ngOnInit(): void {

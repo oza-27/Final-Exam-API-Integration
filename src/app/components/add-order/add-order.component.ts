@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/services/auth.service';
+import { OrderManagementService } from 'src/app/services/Order-Management/order-management.service';
 
 @Component({
   selector: 'app-add-order',
@@ -13,7 +13,7 @@ export class AddOrderComponent implements OnInit {
   submitting:boolean=false;
   addOrderForm:FormGroup;
 
-  constructor(private fb:FormBuilder, private toastr:ToastrService, private service:AuthService,
+  constructor(private fb:FormBuilder, private toastr:ToastrService, private service:OrderManagementService,
     private router:Router) { }
 
   ngOnInit(): void {

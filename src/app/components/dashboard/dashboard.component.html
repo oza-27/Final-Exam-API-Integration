@@ -31,13 +31,13 @@
         <h3 style="font-size: 40px;font-style: italic;"> All Products </h3>
     </div>
     <div class="row m-2 p-1">
-        <div class="card m-2" style="width: 18rem;" *ngFor="let products of products">
+        <div class="card m-2" style="width: 18rem;" *ngFor="let products of productlist">
             <div class="card-body">
                 <h5 class="card-title">{{products.name}}</h5>
                 <p class="card-text">{{products.description}}</p>
             </div>
             <div class="card-body">
-                <a (click)="onClick(products)" class="card-link btn btn-secondary"><i class="bi bi-cart-plus"></i>Add To Cart</a>
+                <a (click)="addToCart(products)" class="card-link btn btn-secondary"><i class="bi bi-cart-plus"></i>Add To Cart</a>
             </div>
         </div>
     </div>

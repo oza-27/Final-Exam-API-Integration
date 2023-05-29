@@ -7,7 +7,7 @@
     <div class="border m-1 p-1">
         <div class="row m-1 p-1">
             <div class="col-6 text-start">
-                <button class="btn btn-outline-info" style="width: 30%;" routerLink="/add-address"> <i class="bi bi-plus-circle"></i> Add Address
+                <button class="btn btn-outline-info" style="width: 30%;" (click)="createOrder()"> <i class="bi bi-plus-circle"></i> Create Order
                 </button> 
             </div>
             <div class="col-6">
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody style="height: 20%;">
-                <tr *ngFor="let product of products">
+                <tr *ngFor="let product of productlist">
                     <td> {{product.name}} </td>
                     <td> {{product.description}} </td>
                     <td> {{product.price}} </td>
